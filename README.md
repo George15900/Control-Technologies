@@ -1,0 +1,1 @@
+The Admin Control System is a web-based application designed to help companies manage and monitor employees and job seekers efficiently. It provides a centralized platform for administrators to control operations, track performance, and handle recruitment processes.
