@@ -1,0 +1,119 @@
+<div class="job-vacancy-container">
+  <!-- Header Section -->
+  <div class="header-section">
+    <div class="header-content">
+      <h1 class="page-title">Job Vacancies</h1>
+      <p class="page-subtitle">Manage and view all open job positions</p>
+    </div>
+    <div class="header-stats">
+      <div class="stat-card">
+        <span class="stat-number">{{jobary.length}}</span>
+        <span class="stat-label">Open Positions</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  @if(jobary.length==0){
+    <div class="empty-state">
+      <div class="empty-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.728 0-7.333-.957-10.458-2.646M9 6.75h6m0 0h6m-6 0v6m0-6V4.5M9 6.75h.008v.008H9V6.75zm6 0h.008v.008h-.008V6.75z"/>
+        </svg>
+      </div>
+      <h3 class="empty-title">No Job Vacancies</h3>
+      <p class="empty-message">No open positions available at the moment</p>
+    </div>
+  }
+
+  <!-- Job Vacancies Grid -->
+  @if(jobary.length > 0){
+    <div class="vacancies-grid">
+      @for(data of jobary; track data; let i = $index){
+        <div class="vacancy-card">
+          <!-- Card Header -->
+          <div class="card-header">
+            <div class="position-badge">{{i + 1}}</div>
+            <div class="header-text">
+              <h3 class="job-title">{{data.designation}}</h3>
+              <div class="vacancy-count">
+                <span class="vacancy-badge">{{data.numberofvacancy}} Position{{data.numberofvacancy != 1 ? 's' : ''}}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Body -->
+          <div class="card-body">
+            <!-- Description -->
+            <div class="job-section">
+              <label class="section-label">Job Description</label>
+              <p class="section-content description-text">{{data.job_discription}}</p>
+            </div>
+
+            <!-- Requirements Grid -->
+            <div class="requirements-grid">
+              <div class="requirement-item">
+                <div class="requirement-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C6.228 6.253 2 7.815 2 9.427v5.147C2 16.185 6.228 17.747 12 17.747c5.772 0 10-1.562 10-3.174V9.427c0-1.612-4.228-3.174-10-3.174z"/>
+                  </svg>
+                </div>
+                <div class="requirement-content">
+                  <span class="requirement-label">Qualification</span>
+                  <span class="requirement-value">{{data.job_qualification}}</span>
+                </div>
+              </div>
+
+              <div class="requirement-item">
+                <div class="requirement-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <div class="requirement-content">
+                  <span class="requirement-label">Experience</span>
+                  <span class="requirement-value">{{data.job_experience}}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dates Section -->
+            <div class="dates-section">
+              <div class="date-group">
+                <label class="section-label">Timeline</label>
+                <div class="date-items">
+                  <div class="date-item">
+                    <span class="date-icon">📅</span>
+                    <div>
+                      <span class="date-label">Start Date</span>
+                      <span class="date-value">{{data.job_startingdate | date: 'MMM dd, yyyy'}}</span>
+                    </div>
+                  </div>
+                  <div class="date-item">
+                    <span class="date-icon">📅</span>
+                    <div>
+                      <span class="date-label">End Date</span>
+                      <span class="date-value">{{data.job_enddate | date: 'MMM dd, yyyy'}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Footer -->
+          <div class="card-footer">
+            <button class="action-button delete-btn"
+                    (click)="deleteJob(data.job_id)">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+              </svg>
+              <span>Delete Position</span>
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
+                        

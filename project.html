@@ -1,0 +1,49 @@
+ <br>  
+ <div class="col-sm-12 col-xl-6">
+    <form [formGroup]="Projectform">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Project Regesiter</h6>
+                         
+                           
+                             <div class="form-floating mb-3">
+                                   
+                                <input type="text" class="form-control" id="floatingInput"
+                                    placeholder="Project Name" formControlName="Name">
+                                <label for="floatingInput">Project Name</label>
+                                    @if (Projectform.controls['Name']?.hasError('required') && Projectform.touched) {
+                        <small class="error" style="color: red;">Project Name is required</small>
+                        }
+                            </div>
+
+
+                              <div class="form-floating">
+                                <textarea class="form-control" placeholder="discription"
+                                    id="floatingTextarea" style="height: 150px;" formControlName="discription"></textarea>
+                                <label for="floatingTextarea">Discription</label>
+                                @if (Projectform.controls['discription']?.hasError('required') && Projectform.touched) {
+                        <small class="error" style="color: red;">Discription is required</small>
+                        }
+                            </div><br>
+
+                            
+
+                               <div class="form-floating mb-3">
+                                   
+                                <input type="date" class="form-control" id="floatingInput"
+                                    placeholder="District" formControlName="Starting" [min]="today">
+                                <label for="floatingInput">Starting Date</label>
+                            </div>
+<div class="form-floating mb-3">
+<input type="date" class="form-control" id="floatingInput"
+                                    placeholder="Ending Date" formControlName="Ending" [min]="today">
+                                <label for="floatingInput">Ending Date</label></div>
+                            </div>
+                            
+                           
+                       <div class="d-grid gap-2">
+  <button class="btn btn-primary" type="button" (click)="Submit()" [disabled]="Projectform.invalid">Submit</button>
+</div>                        
+</form>  
+                        </div>
+                    
+                   

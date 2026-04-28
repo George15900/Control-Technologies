@@ -1,0 +1,203 @@
+<br>
+<form [formGroup]="empreg" enctype="multipart/form-data">
+    <div class="container-fluid pt-4 px-4">
+        <h5 class="mb-4">Employee Regesiter</h5>
+        <div class="row g-4">
+
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-light rounded h-100 p-4">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Name"
+                            formControlName="name" required>
+                        <label for="floatingInput">Name</label>
+                        @if (empreg.controls['name']?.hasError('required') && savestatus) {
+                        <small class="error">Name is required</small>
+                        }
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="G-mail"
+                            formControlName="gmail" required>
+                        <label for="floatingInput">Email address</label>
+                        @if (empreg.controls['gmail']?.hasError('required') && savestatus) {
+                        <small class="error">Email is required</small>
+                        }
+                        @if (empreg.controls['gmail']?.hasError('pattern') && savestatus) {
+                        <small class="error">Please enter a valid email address</small>
+                        }
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="tel" class="form-control" id="floatingInput" placeholder="Mobile number"
+                            formControlName="contact" required maxlength="10" minlength="10">
+                        <label for="floatingInput">Contact number</label>
+                        @if (empreg.controls['contact']?.hasError('required') && savestatus) {
+                        <small class="error">Contact is required</small>
+                        }
+                        @if (empreg.controls['contact']?.hasError('minlength') && savestatus) {
+                        <small class="error">Contact must be 10 digits</small>
+                        }
+                        @if (empreg.controls['contact']?.hasError('pattern') && savestatus) {
+                        <small class="error">Contact must start with 6-9</small>
+                        }
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="House name"
+                            formControlName="per_address" required>
+                        <label for="floatingInput">House name</label>
+                        @if (empreg.controls['per_address']?.hasError('required') && savestatus) {
+                        <small class="error">House name is required</small>
+                        }
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Place"
+                            formControlName="current_address" required>
+                        <label for="floatingInput">place</label>
+                        @if (empreg.controls['current_address']?.hasError('required') && savestatus) {
+                        <small class="error">Place is required</small>
+                        }
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="floatingInput" placeholder="Pincode"
+                            formControlName="pincode" required>
+                        <label for="floatingInput">Pincode </label>
+                        @if (empreg.controls['pincode']?.hasError('required') && savestatus) {
+                        <small class="error">Pincode is required</small>
+                        }
+                        @if (empreg.controls['pincode']?.hasError('minlength') && savestatus) {
+                        <small class="error">Pincode must be 6 digits</small>
+                        }
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" (change)="onchange()"
+                            formControlName="state_id">
+                            <option selected>----States----</option>
+                            @for(data of stateary;track data;let i=$index){
+                            <option [value]="data.state_id">{{data.state}}</option>
+                            }
+                        </select>
+                        <label for="floatingSelect">States</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                            formControlName="district_id">
+                            <option selected>----District----</option>
+                            @for(data of districtary;track data;let i=$index){
+                            <option [value]="data.district_id">{{data.District_name}}</option>
+                            }
+                        </select>
+                        <label for="floatingSelect">District</label>
+                        @if (empreg.controls['district_id']?.hasError('required') && savestatus) {
+                        <small class="error">District is required</small>
+                        }
+                    </div>
+                    <div>
+                        <label for="formFileLg" class="form-label">photo</label>
+                        <input class="form-control form-control-lg" id="formFileLg" type="file" formControlName="photo"
+                            required (change)="selectFile($event)">
+                        @if (empreg.controls['photo']?.hasError('required') && savestatus) {
+                        <small class="error">Photo is required</small>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-light rounded h-100 p-4">
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Post office" required
+                            formControlName="crr_pincode">
+                        <label for="floatingInput">Post office</label>
+                        @if (empreg.controls['crr_pincode']?.hasError('required') && savestatus) {
+                        <small class="error">Post office is required</small>
+                        }
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                            formControlName="gender">
+                            <option value="1">---Gender---</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        <label for="floatingSelect">Gender</label>
+                        @if (empreg.controls['gender']?.hasError('required') && savestatus) {
+                        <small class="error">Gender is required</small>
+                        }
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="floatingInput" placeholder="Experences"
+                            formControlName="exprenes" required>
+                        <label for="floatingInput">Year Of Experences</label>
+                        @if (empreg.controls['exprenes']?.hasError('required') && savestatus) {
+                        <small class="error">Years of experience is required</small>
+                        }
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="date" class="form-control" id="floatingInput" placeholder="Date Of Brith"
+                            formControlName="dob" [max]="today" required>
+                        <label for="floatingInput">Date Of Brith</label>
+                        @if (empreg.controls['dob']?.hasError('required') && savestatus) {
+                        <small class="error">Date of birth is required</small>
+                        }
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                            formControlName="designation_id">
+                            <option selected>----Designation----</option>
+                            @for(data of designationarry;track data;let i=$index){
+                            <option [value]="data.designation_id">{{data.designation}}</option>
+                            }
+                        </select>
+                        <label for="floatingSelect">Designation</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="floatingPassword" placeholder="Total Leave"
+                            formControlName="total_leave" required>
+                        <label for="floatingPassword">Total Leave</label>
+                        @if (empreg.controls['total_leave']?.hasError('required') && savestatus) {
+                        <small class="error">Total leave is required</small>
+                        }
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="Username"
+                            formControlName="username" aria-describedby="inputGroupPrepend" required>
+                        <label for="floatingPassword">Username</label>
+                        @if (empreg.controls['username']?.hasError('required') && savestatus) {
+                        <small class="error">Username is required</small>
+                        }
+                        @if (empreg.controls['username']?.hasError('minlength') && savestatus) {
+                        <small class="error">Username must be minimum 5 characters</small>
+                        }
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                            formControlName="password" required>
+                        <label for="floatingPassword">Password</label>
+                        @if (empreg.controls['password']?.hasError('required') && savestatus) {
+                        <small class="error">Password is required</small>
+                        }
+                        @if (empreg.controls['password']?.hasError('minlength') && savestatus) {
+                        <small class="error">Password must be minimum 6 characters</small>
+                        }
+                        @if (empreg.controls['password']?.hasError('pattern') && savestatus) {
+                        <small class="error">Password must contain uppercase, lowercase, number & symbol</small>
+                        }
+                    </div>
+                    <div>
+                        <label for="formFileLg" class="form-label">Id-card</label>
+                        <input class="form-control form-control-lg" id="formFileLg" type="file"
+                            formControlName="id_card" (change)="selectFile1($event)" required>
+                        @if (empreg.controls['id_card']?.hasError('required') && savestatus) {
+                        <small class="error">ID card is required</small>
+                        }
+                    </div>
+                    <br>
+
+                </div>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="button" (click)="empinsert()">submit</button>
+            </div>
+        </div>
+    </div>
+</form>

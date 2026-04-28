@@ -1,0 +1,104 @@
+/* Main Container */
+.employee-container {
+    width: 80%;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Section */
+.profile-section {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.profile-section img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #0d6efd;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.profile-section img:hover {
+    transform: scale(1.05);
+}
+
+/* Employee Name */
+.profile-section h5 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Table Styling */
+.table {
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table th {
+    width: 35%;
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #444;
+}
+
+.table td {
+    color: #555;
+}
+
+/* ID Card Image */
+.id-card-img {
+    display: block;
+    margin: 20px auto;
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid #dee2e6;
+}
+
+/* Buttons Section */
+.button-section {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.button-section .btn {
+    padding: 8px 25px;
+    font-weight: 500;
+    border-radius: 25px;
+    transition: 0.3s ease-in-out;
+}
+
+.button-section .btn-primary {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    border: none;
+}
+
+.button-section .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .employee-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .profile-section img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .table th, .table td {
+        font-size: 14px;
+    }
+}

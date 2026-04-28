@@ -1,0 +1,174 @@
+<br>
+<div>
+  <h5 class="card-title">Interview Person</h5>
+</div>
+<br>
+<form [formGroup]="jobform">
+   <div class="form-floating mb-3" >
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                            formControlName="job_id"  (change)="onchange($event)" placeholder="Job Role">
+                            <option selected>----Job Role----</option>
+                            @for(data of jobary;track data;let i=$index){
+                            <option [value]="data.job_id">{{data.designation}}</option>
+                            }
+                        </select>
+                        <label for="floatingSelect">Job Role</label>
+                    </div>
+</form>
+
+ @if(job.length==0){
+ <figcaption class="figure-caption text-end">
+  <small class="text-muted">
+  <h2 style="margin-right:46% ; margin-top: 10%; margin-bottom: 20%; text-size-adjust:20px; color:gray;">
+    No Applications Found !</h2>
+  </small>
+</figcaption>
+}
+@for (data of job; track $index; let i = $index) {
+
+<div class="card mb-3">
+  <div class="card-body">
+
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5>Role: {{ data.designation }}</h5>
+
+      @if (data.offer_letter === 'No') {
+
+      <!-- Button -->
+      <button class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#modal' + i">
+        Send Offer Letter
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" [id]="'modal' + i" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title">Offer Letter</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+              <form [formGroup]="offerletter" enctype="multipart/form-data">
+
+                <label class="form-label">Upload Offer Letter</label>
+                <input type="file" class="form-control" (change)="selectFile1($event)" formControlName="offerlett"
+                  required>
+
+                <!-- Hidden Fields -->
+                <input type="hidden" class="form-control" formControlName="id" required>
+                <input type="hidden" class="form-control" formControlName="name" required>
+                <input type="hidden" class="form-control" formControlName="gmail" required>
+                <input type="hidden" class="form-control" formControlName="role" required>
+
+                <p class="text-center mt-3">
+                  Offer Letter will be sent to <b>{{ data.jobseeker_name }}</b>
+                </p>
+
+                <div class="text-end">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Close
+                  </button>
+
+                  <button type="button" class="btn btn-primary ms-2" (click)="Letter()">
+                    Send
+                  </button>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      } @else {
+
+      <span class="badge bg-success">Offer Letter Sent</span>
+
+      }
+
+    </div>
+
+    <div class="row mt-3">
+
+      <div class="col-sm-6">
+
+        <h5>Name: {{ data.jobseeker_name }}</h5>
+
+        <table class="table">
+          <tr>
+            <td>Email</td>
+            <td>{{ data.jobseeker_email }}</td>
+          </tr>
+          <tr>
+            <td>Contact</td>
+            <td>{{ data.jobseeker_contact }}</td>
+          </tr>
+          <tr>
+            <td>DOB</td>
+            <td>{{ data.jobseeker_dob | date:'MMM dd, yyyy' }}</td>
+          </tr>
+          <tr>
+            <td>Photo</td>
+            <td>
+              <img src="http://localhost:3000/images/{{data.jobseeker_photo}}" height="250px" width="250px" >
+            </td>
+          </tr>
+        </table>
+
+      </div>
+
+      <div class="col-sm-6">
+
+        <table class="table">
+          <tr>
+            <td>Qualification</td>
+            <td>{{ data.jobseeker_qualific }}</td>
+          </tr>
+          <tr>
+            <td>Experience</td>
+            <td>{{ data.applycation_experience }}</td>
+          </tr>
+          <tr>
+            <td>Apply Date</td>
+            <td>{{ data.apply_date | date:'MMM dd, yyyy' }}</td>
+          </tr>
+          <tr>
+            <td>Resume</td>
+            <td>
+              <a href="http://localhost:3000/images/{{data.Resume}}" target="_blank">
+                View Resume
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>ID Card</td>
+            <td>
+              <img src="http://localhost:3000/images/{{data.jobseeker_idcard}}" height="250px" width="350px" >
+            </td>
+          </tr>
+        </table>
+
+      </div>
+
+    </div>
+
+    <div class="card-footer text-center">
+
+      <button class="btn btn-outline-danger me-3" (click)="Update(data.jobapplication_id,'Rejected')">
+        Reject
+      </button>
+
+      <button class="btn btn-outline-primary" [routerLink]="['/adminmaster/new_employee', data.jobseeker_id]">
+        Make Employee
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+}

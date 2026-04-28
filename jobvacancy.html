@@ -1,0 +1,70 @@
+ <br>
+<form [formGroup]="jobvacancyform" novalidate>
+    <div class="col-sm-12 col-xl-6">
+        <div class="bg-light rounded h-100 p-4">
+            <h6 class="mb-4">Job Vacancy Register</h6>
+
+            <div class="form-floating mb-3">
+                <select class="form-select" id="designationSelect" aria-label="Select designation"
+                        formControlName="designation_id">
+                    <option value="" selected disabled>-- Select Designation --</option>
+                    <option *ngFor="let data of designationarry; let i = index;"
+                            [value]="data.designation_id">{{ data.designation }}</option>
+                </select>
+                <label for="designationSelect">Designation</label>
+            </div>
+            <div *ngIf="jobvacancyform.get('designation_id')?.invalid && (savestatus || jobvacancyform.get('designation_id')?.dirty || jobvacancyform.get('designation_id')?.touched)" class="text-danger mb-2">
+                Designation is required.
+            </div>
+
+            <div class="form-floating mb-3">
+                <textarea class="form-control" placeholder="description"
+                          id="floatingTextarea" style="height: 150px;" formControlName="discription"></textarea>
+                <label for="floatingTextarea">Description</label>
+            </div>
+            <div *ngIf="jobvacancyform.get('discription')?.hasError('required') && (savestatus || jobvacancyform.get('discription')?.dirty || jobvacancyform.get('discription')?.touched)" class="text-danger mb-2">
+                Description is required.
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="qualificationInput"
+                       placeholder="Qualification" formControlName="qualification">
+                <label for="qualificationInput">Qualification</label>
+            </div>
+            <div *ngIf="jobvacancyform.get('qualification')?.invalid && (savestatus || jobvacancyform.get('qualification')?.dirty || jobvacancyform.get('qualification')?.touched)" class="text-danger mb-2">
+                Qualification is required.
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="experienceInput"
+                       placeholder="Experience" formControlName="experience">
+                <label for="experienceInput">Experience</label>
+            </div>
+            <div *ngIf="jobvacancyform.get('experience')?.invalid && (savestatus || jobvacancyform.get('experience')?.dirty || jobvacancyform.get('experience')?.touched)" class="text-danger mb-2">
+                Experience is required.
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="vacancyInput"
+                       placeholder="Number of vacancy" formControlName="numberofvacancy">
+                <label for="vacancyInput">Number of vacancy</label>
+            </div>
+            <div *ngIf="jobvacancyform.get('numberofvacancy')?.invalid && (savestatus || jobvacancyform.get('numberofvacancy')?.dirty || jobvacancyform.get('numberofvacancy')?.touched)" class="text-danger mb-2">
+                Number of vacancies is required.
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="date" class="form-control" id="enddateInput"
+                       placeholder="Ending Date" formControlName="enddate" [min]="today">
+                <label for="enddateInput">Ending Date</label>
+            </div>
+            <div *ngIf="jobvacancyform.get('enddate')?.invalid && (savestatus || jobvacancyform.get('enddate')?.dirty || jobvacancyform.get('enddate')?.touched)" class="text-danger mb-2">
+                End date is required.
+            </div>
+
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" type="button" (click)="Submit()" [disabled]="jobvacancyform.invalid">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>

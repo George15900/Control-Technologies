@@ -1,0 +1,115 @@
+<br>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<a href="javascript:history.back()" class="btn btn-secondary">
+  <i class="bi bi-arrow-left"></i> Back
+</a>
+
+@for(data of emparyy; track data; let i = $index){
+
+<div class="employee-container">
+
+    <!-- Profile Section -->
+    <div class="profile-section">
+        <img src="http://localhost:3000/images/{{data.photo}}" 
+             alt="Profile Image" 
+             class="img-thumbnail" />
+        <h4>{{data.employee_name}}</h4>
+    </div>
+
+    <!-- Employee Details Table -->
+    <table class="table table-bordered table-hover">
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <td>{{data.employee_id_num}}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{data.employee_name}}</td>
+            </tr>
+            <tr>
+                <th>G-mail</th>
+                <td>{{data.emp_mail}}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{data.emp_contact}}</td>
+            </tr>
+            <tr>
+                <th>House Name</th>
+                <td>{{data.house_name}}</td>
+            </tr>
+            <tr>
+                <th>Place</th>
+                <td>{{data.place}}</td>
+            </tr>
+            <tr>
+                <th>Post Office</th>
+                <td>{{data.emp_po}}</td>
+            </tr>
+            <tr>
+                <th>Pincode</th>
+                <td>{{data.pincode}}</td>
+            </tr>
+            <tr>
+                <th>District</th>
+                <td>{{data.District_name}}</td>
+            </tr>
+            <tr>
+                <th>State</th>
+                <td>{{data.state}}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{data.gender}}</td>
+            </tr>
+            <tr>
+                <th>Experience</th>
+                <td>{{data.exprenes}}</td>
+            </tr>
+            <tr>
+                <th>Designation</th>
+                <td>{{data.designation}}</td>
+            </tr>
+            <tr>
+                <th>Date Of Birth</th>
+                <td>{{data.DOB | date: 'MMM dd, yyyy'}}</td>
+            </tr>
+            <tr>
+                <th>Join Date</th>
+                <td>{{data.JDOB | date: 'MMM dd, yyyy'}}</td>
+            </tr>
+            <tr>
+                <th>Total Leave</th>
+                <td>{{data.total_leave}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ID Card Section -->
+    <div class="text-center mt-4">
+        <h5>ID Card</h5>
+        <img src="http://localhost:3000/images/{{data.id_card}}" 
+             alt="ID Card" 
+             class="id-card-img img-thumbnail" />
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-section">
+        <button type="button" 
+                class="btn btn-primary me-3"
+                [routerLink]="['/adminmaster/emp-edit', data.employee_id]">
+            Edit
+        </button>
+
+        <button type="button" 
+                class="btn btn-danger"
+                (click)="Delete(data.employee_id)">
+            Inactive
+        </button>
+    </div>
+
+</div>
+
+}

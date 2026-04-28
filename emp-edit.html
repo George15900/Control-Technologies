@@ -1,0 +1,112 @@
+<br>
+<form [formGroup]="empupdate" enctype="multipart/form-data">
+    <div class="container-fluid pt-4 px-4">
+        <h5 class="mb-4">Employee Regesiter</h5>
+        <div class="row g-4">
+
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-light rounded h-100 p-4">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Name"
+                            formControlName="name">
+                        <label for="floatingInput">Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="G-mail"
+                            formControlName="gmail">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="num" class="form-control" id="floatingInput" placeholder="Mobile number"
+                            formControlName="contact">
+                        <label for="floatingInput">Contact number</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="House name"
+                            formControlName="per_address">
+                        <label for="floatingInput">House name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Place"
+                            formControlName="current_address">
+                        <label for="floatingInput">place</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="floatingInput" placeholder="Pincode"
+                            formControlName="pincode">
+                        <label for="floatingInput">Pincode </label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="District"
+                            formControlName="District" readonly>
+                        <label for="floatingInput">District</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="States"
+                            formControlName="States" readonly>
+                        <label for="floatingInput">States</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Post office"
+                            formControlName="crr_pincode">
+                        <label for="floatingInput">Post office</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Gender"
+                            formControlName="Gender" readonly>
+                        <label for="floatingInput">Gender</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-light rounded h-100 p-4">
+
+
+
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="floatingInput" placeholder="Experences"
+                            formControlName="exprenes">
+                        <label for="floatingInput">Year Of Experences</label>
+                    </div>
+
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="Designation"
+                            formControlName="designation" readonly>
+                        <label for="floatingPassword">Designation</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="Date Of Brith"
+                            formControlName="dob">
+                        <label for="floatingPassword">Date Of Brith</label>
+                    </div>
+
+                    <div>
+                        <label for="formFileLg" class="form-label">Id-card</label>
+                        <img src="http://localhost:3000/images/{{emparyy[0].id_card}}" alt="image" class="img-thumbnail"
+                            style="max-width: 300px;" height="450px" width="750px" />
+                        <input class="form-control form-control-lg" id="idcard" type="file" (change)="selectFile1($event)" formControlName="id_card">
+                    </div>
+                    <div>
+                        <label for="formFileLg" class="form-label">photo</label>
+                        <img src="http://localhost:3000/images/{{emparyy[0].photo}}" alt="image" class="img-thumbnail"
+                            style="max-width: 222px;" height="300px" width="4000px" />
+                        <input class="form-control form-control-lg" id="profilephoto" (change)="selectFile($event)" type="file"
+                            formControlName="photo">
+                    </div>
+
+                    <br>
+
+                </div>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="button" (click)="onSubmit()">Save</button>
+            </div>
+        </div>
+    </div>
+</form>

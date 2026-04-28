@@ -1,0 +1,132 @@
+/* ===== FORM DESIGN ===== */
+
+.report-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  background: #ffffff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.form-group input {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76,175,80,.4);
+}
+
+/* ===== BUTTONS ===== */
+
+.form-group button {
+  padding: 9px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.form-group button:first-of-type {
+  background: #4caf50;
+  color: white;
+}
+
+.form-group button:last-of-type {
+  background: #2196f3;
+  color: white;
+}
+
+.form-group button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,.2);
+}
+
+/* ===== REPORT TITLE ===== */
+
+.title {
+  display: block;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+/* ===== TABLE DESIGN ===== */
+
+.table-responsive {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.tbl-cart {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tbl-cart thead {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white;
+}
+
+.tbl-cart th,
+.tbl-cart td {
+  padding: 12px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.tbl-cart tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.tbl-cart tbody tr:hover {
+  background: #e8f5e9;
+  transition: 0.3s;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+  .form-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  .tbl-cart th,
+  .tbl-cart td {
+    font-size: 12px;
+    padding: 8px;
+  }
+}

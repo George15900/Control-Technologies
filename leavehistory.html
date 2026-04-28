@@ -1,0 +1,50 @@
+<br> <div>
+ <h5 class="card-title">Leave History</h5>
+  </div><br>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<a href="javascript:history.back()" class="btn btn-secondary">
+  <i class="bi bi-arrow-left"></i> Back
+</a><br>
+  <form class="d-flex" role="search" style="margin-left: 65%; margin-right: 5%;" [formGroup]="searchForm">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" formControlName="search" />
+    <button class="btn btn-outline-success" type="submit" (click)="onSearch()">Search</button>
+</form><br>
+   @if(leave.length==0){
+ <figcaption class="figure-caption text-end">
+  <small class="text-muted">
+  <h2 style="margin-right:46% ; margin-top: 10%; margin-bottom: 20%; text-size-adjust:20px; color:gray;">
+    No Leave taken Available Yet !</h2>
+  </small>
+</figcaption>
+}
+  <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">ID</th>
+                                         <th scope="col">Name</th>
+                                         <th scope="col">Reason</th>
+                                          <th scope="col">Leaves Take</th>
+                                          <th scope="col">Active Leaves now</th>
+                                         <th scope="col">Starting Date</th>
+                                          <th scope="col">Ending Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     @for(data of leave;track data;let i=$index){ 
+                                    <tr>
+                                        <th scope="row">{{i + 1}}</th>
+                                        <td>{{data.employee_id_num}}</td>        
+                                         <td>{{data.employee_name}}</td>
+                                          <td>{{data.reason}}</td>
+                                           <td>{{data.leave_no_date}}</td>
+                                           <td>{{data.total_leave}}</td>        
+                                         <td>{{data.leave_start | date: 'MMM dd, yyyy'}}</td>
+                                          <td>{{data.leave_end | date: 'MMM dd, yyyy'}}</td>
+                                        </tr>
+                                }
+                                </tbody>
+                            </table>
+                        
+

@@ -1,0 +1,77 @@
+<div class="project-view-container">
+  <!-- Header Section -->
+  <div class="header-section">
+    <div class="header-content">
+      <h1 class="page-title">Projects Management</h1>
+      <p class="page-subtitle">View and manage all your projects with ease</p>
+    </div>
+    
+    <div class="header-stats">
+      <div class="stat-card">
+        <span class="stat-number">{{proary.length}}</span>
+        <span class="stat-label">Completed Projects</span>
+      </div>
+    </div>
+  </div>
+
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<a href="javascript:history.back()" class="btn btn-secondary">
+  <i class="bi bi-arrow-left"></i> Back
+</a>
+  <!-- Empty State -->
+  @if(proary.length==0){
+    <div class="empty-state">
+      <div class="empty-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+      </div>
+      <h3 class="empty-title">No Projects Available</h3>
+      <p class="empty-message">Start by creating your first project to get began</p>
+    </div>
+  }
+
+  <!-- Projects Grid -->
+  @if(proary.length > 0){
+    <div class="projects-grid">
+      @for(data of proary; track data; let i = $index){
+        <div class="project-card">
+          <!-- Card Header -->
+          <div class="card-header">
+            <div class="project-number">{{i + 1}}</div>
+            <h3 class="project-name">{{data.project_name}}</h3>
+          </div>
+
+          <!-- Card Body -->
+          <div class="card-body">
+            <!-- Description -->
+            <div class="project-section">
+              <label class="section-label">Description</label>
+              <p class="section-content description-text">{{data.project_describtion}}</p>
+            </div>
+
+            <!-- Dates Grid -->
+            <div class="dates-grid">
+              <div class="date-item">
+                <span class="date-label">Start Date</span>
+                <span class="date-value">{{data.project_startdate | date: 'MMM dd, yyyy'}}</span>
+              </div>
+              <div class="date-item">
+                <span class="date-label">End Date</span>
+                <span class="date-value">{{data.project_endingdate | date: 'MMM dd, yyyy'}}</span>
+              </div>
+              <div class="date-item">
+                <span class="date-label">Posted Date</span>
+                <span class="date-value">{{data.project_postdate | date: 'MMM dd, yyyy'}}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Footer -->
+        
+        </div>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,94 @@
+<br> <div>
+    <h5 class="card-title">Requested for job vacancy</h5>
+  </div><br>
+ <form [formGroup]="jobform">
+   <div class="form-floating mb-3" >
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                            formControlName="job_id"  (change)="onchange($event)">
+                            <option selected>----Job Role----</option>
+                            @for(data of jobary;track data;let i=$index){
+                            <option [value]="data.job_id">{{data.designation}}</option>
+                            }
+                        </select>
+                        <label for="floatingSelect">Job Role</label>
+                    </div>
+</form>
+ @for(data of job;track data;let i=$index){
+  <div class="card">
+  <div class="card-body">
+    <div class="row">
+       <div class="card-header">
+    <h5 class="card-title">Role:&nbsp;&nbsp;{{data.designation}}</h5>
+  </div>
+      <div class="col-sm-6 mb-3 mb-sm-0">
+         <div >
+    <h5 >Name:&nbsp;&nbsp;{{data.jobseeker_name}}</h5>
+  </div>
+      <table class="table">
+ 
+    <tr>
+      <td>Gmail</td>
+      <td>{{data.jobseeker_email}}</td>
+    </tr>
+    <tr>
+      <td>Contact</td>
+      <td>&nbsp;{{data.jobseeker_contact}}</td>
+    </tr>
+    <tr>
+      <td>D.O.B</td>
+      <td>{{data.jobseeker_dob | date: 'MMM dd, yyyy'}}</td>
+    </tr>
+    <tr>
+      <th scope="col">photo</th>
+      <th scope="col"><img src="http://localhost:3000/images/{{data.jobseeker_photo}}" height="250px" width="250px"  ></th>
+      
+      
+    </tr>
+    
+        </table>
+      </div>
+
+
+      <div class="col-sm-6">
+       <table class="table">
+  <tr>
+      <td>Qualification</td>
+      <td>&nbsp;&nbsp;{{data.jobseeker_qualific}}</td>
+    </tr>
+    <tr>
+      <td>Experiences</td>
+      <td>&nbsp;&nbsp;{{data.applycation_experience}}</td>
+    </tr>
+       <tr>
+      <td>Apply date</td>
+      <td>&nbsp;&nbsp;{{data.apply_date | date: 'MMM dd, yyyy'}}</td>
+    </tr>
+   <tr>
+      <th scope="col">Resume</th>
+      <th scope="col"><a href="http://localhost:3000/images/{{data.Resume}}">Resume</a></th>
+    </tr>
+    <tr>
+      <th scope="col">ID-Card</th>
+      <th scope="col"><img src="http://localhost:3000/images/{{data.jobseeker_idcard}}" height="250px" width="350px" ></th>
+    </tr>
+       </table>
+      </div>
+
+    </div>
+    <div class="card-footer text-body-secondary">
+    <div style="margin-left:40%;">
+        <button type="button" class="btn btn-outline-danger" (click)="Update(data.jobapplication_id,'Rejected')">Rejected</button>&nbsp;&nbsp;&nbsp;&nbsp;
+   <button type="button" class="btn btn-outline-primary" (click)="Update(data.jobapplication_id,'Approved')">Accepted</button>
+  </div>
+  </div>
+  </div>
+</div><br>
+ }
+@if(job.length==0){
+ <figcaption class="figure-caption text-end">
+  <small class="text-muted">
+  <h2 style="margin-right:46% ; margin-top: 10%; margin-bottom: 20%; text-size-adjust:20px; color:gray;">
+    No Job Applications  !</h2>
+  </small>
+</figcaption>
+}

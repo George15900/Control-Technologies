@@ -1,0 +1,49 @@
+<br>
+
+  <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">India State List</h6>
+                            <form [formGroup]="districtform">
+                            <select class="form-select" id="floatingSelect"
+                                    aria-label="Floating label select example" (change)="onchange($event)"
+                                    formControlName="state_id" >
+                                     <option selected>----States----</option>
+                                    @for(data of stateary;track data;let i=$index){
+                                    <option [value]="data.state_id" >{{data.state}}</option >
+                                    }
+                                </select>
+                             </form>
+                              </div>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">State</th>
+                                         <th scope="col">District</th>
+                                         <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     @for(data of districtary;track data;let i=$index){ 
+                                    <tr>
+                                        <th scope="row">{{i + 1}}</th>
+                                        <td>{{data.state}}</td>        
+                                         <td>{{data.District_name}}</td>
+                                         <td>
+                                         <button type="button" class="btn btn-outline-primary" (click)="Delete(data.district_id )">Delete</button></td> 
+                                        </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                        
+@if(districtary.length==0){
+ <figcaption class="figure-caption text-end">
+  <small class="text-muted">
+  <h2 style="margin-right:46% ; margin-top: 10%; margin-bottom: 20%; text-size-adjust:20px; color:gray;">
+    No Districts  !</h2>
+  </small>
+</figcaption>
+}
+                
+                  
